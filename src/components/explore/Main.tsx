@@ -16,7 +16,8 @@ export default function Main({ profileName }: { profileName: string|undefined })
                     <p className="text-xl md:text-xl md:text-center max-w-[600px] leading-[1.6]">
                         {profile.overview}
                     </p>
-                    <div className={max-w-[600px] md:text-center ${readMore ? "block" : "hidden"}}>
+                    <div className={`max-w-[600px] md:text-center ${readMore ? "block" : "hidden"}`}>
+
                         <p className="text-xl md:text-xl leading-[1.6]" dangerouslySetInnerHTML={{ __html: profile.readmore }} />
                     </div>
                     <button className="mt-6 border-solid border-2 border-[#133748] py-3 px-6 hover:bg-[#133748] hover:text-white" onClick={() => setReadMore(!readMore)}>
@@ -74,7 +75,7 @@ function FAQs({ profile }: { profile: typeof profileData[keyof typeof profileDat
                     </button>
                     {/* Carousel Container */}
                     <div className="w-full overflow-hidden">
-                        <div className="flex transition-transform duration-300" style={{ transform: translateX(-${currentIndex * 100}%) }}>
+                        <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                             {faqItems.map((faq, index) => (
                                 <div key={index} className="min-w-[80%] mx-[10%] my-auto py-4 px-5 bg-white rounded-2xl text-left text-black shadow-lg md:h-[140px]"> {/* Decreased height to half */}
                                     <h3 className="font-bold text-lg leading-[1.2]">{faq.question}</h3>

@@ -11,7 +11,8 @@
         "skills": "Hard Skills: Strong foundation in Data Structures and Algorithms (DSA), competitive programming, and knowledge of web development or related fields.<br/>Soft Skills: Effective communication, teamwork, adaptability, and leadership",
         "trajectory": "Career stability with many professionals staying 6-20 years in the role. Growth is smooth with promotions in 1-1.5 years. Options for career progression include moving into management or continuing as a senior developer",
         "resume": "CGPA cutoff: Typically 7.5 (some companies may require 8).<br/>Key highlights: Programming assignments, especially from COL100/COL106, participation in hackathons, and self-driven projects in new tech stacks",
-        "companies": "Pure SDE Roles: Google, Microsoft, Uber, Amazon, Flipkart, Facebook, Adobe, Infosys, Samsung, LinkedIn, Dell, Intuit.<br/>SDE Roles in Finance: JPMC, Morgan Stanley, Goldman Sachs."
+        "companies": "Pure SDE Roles: Google, Microsoft, Uber, Amazon, Flipkart, Facebook, Adobe, Infosys, Samsung, LinkedIn, Dell, Intuit.<br/>SDE Roles in Finance: JPMC, Morgan Stanley, Goldman Sachs.",
+        "label": ["1st", "2nd","3rd", "4th", "5th","6th","7th"]
     },
     "quant": {
         "name": "Quant",
@@ -25,7 +26,8 @@
         "skills": "Exceptional coding skills, particularly in C++ and Python.<br/>Proficiency in Object-Oriented Programming, Data Analysis Techniques, and Statistical Methods.<br/>Strong problem-solving abilities, with a deep understanding of probability and game theory.",
         "trajectory": "High-pressure environments with high rewards with potential job switches after a few years or transitions to tech.<br/>Significant pay hikes and complex problem-solving opportunities for those who excel.<br/>Paths include further specialization or shifts to tech/finance roles",
         "resume": "<ul style=\"list-style: outside; margin-left: 15px;\"><li>Strong CGPA or department rank.</li><li>Projects in coding and quantitative analysis.</li><li>Competitive programming experience.</li><li>Hackathons or self-driven projects showcasing problem-solving skills.</li></ul>",
-        "companies": "Elite Quant Firms: Tower Research Capital, Optiver, Jane Street, Citadel Securities, Quadeye, Alphagrep, Graviton, NK Securities.<br/>Finance Giants with Quant Roles: JP Morgan Chase, Goldman Sachs."
+        "companies": "Elite Quant Firms: Tower Research Capital, Optiver, Jane Street, Citadel Securities, Quadeye, Alphagrep, Graviton, NK Securities.<br/>Finance Giants with Quant Roles: JP Morgan Chase, Goldman Sachs.",
+        "label": ["8st", "9nd","10rd", "11th", "12th","13th","14th"]
     },
     "core": {
         "name": "Core",
@@ -39,7 +41,8 @@
         "skills": "Hard Skills: Circuit Design, Digital Electronics, Programming.<br/>Key courses include Digital Electronics, Circuit Theory, Control Systems, and Analog Electronic Circuits",
         "trajectory": "Career growth starts gradually but becomes highly rewarding with experience. Engineers often advance to lead roles within 8-10 years.<br/>The expanding semiconductor industry in India offers stable and lucrative long-term career opportunities.",
         "resume": "<ul style=\"list-style: outside; margin-left: 15px;\"><li>Relevant EE projects and internships (research or corporate)</li><li>CGPA of 7-7.5+ is generally sufficient; some companies may require 8+.</li><li>Strong technical knowledge and relevant projects are prioritized over extracurricular activities.</li></ul>",
-        "companies": "Nvidia, Texas Instruments, Qualcomm, Intel, Jaguar, Land Rover, MediaTek, Cadence"
+        "companies": "Nvidia, Texas Instruments, Qualcomm, Intel, Jaguar, Land Rover, MediaTek, Cadence",
+        "label": ["15st", "16nd","17rd", "18th", "19th","20th","21th"]
     },
     "finance": {
         "name": "Finance",
@@ -53,7 +56,8 @@
         "skills": "Hard Skills: Strong analytical and quantitative skills, and knowledge of programming languages.<br/>Soft Skills: Analytical thinking and effective communication",
         "trajectory": "The finance sector in India is growing, with increasing economic activity and foreign investments. Career prospects are strong, with opportunities for advancement into senior roles or specializations in areas like investment banking or private equity.",
         "resume": "<ul style=\"list-style: outside; margin-left: 15px;\"><li>Strong CGPA</li><li>Finance-related projects and coursework</li><li>Relevant internships or work experience</li></ul>",
-        "companies": "Goldman Sachs, Morgan Stanley, American Express, NK Securities, J.P. Morgan Chase, Barclays, DMI Finance, Alphagrep Securities, Piramal, Quadria"
+        "companies": "Goldman Sachs, Morgan Stanley, American Express, NK Securities, J.P. Morgan Chase, Barclays, DMI Finance, Alphagrep Securities, Piramal, Quadria",
+        "label": ["1st", "2nd","3rd", "4th", "5th","6th","7th"]
     },
     "ai-ml": {
         "name": "AI/ML",
@@ -67,7 +71,8 @@
         "skills": "Hard Skills: Deep Learning, Large Language Models (LLMs), Optimization, Machine Learning, Linear Algebra, Python",
         "trajectory": "AI/ML careers offer rapid growth and substantial rewards. As you gain experience, you’ll have opportunities to lead projects, drive innovation, and influence AI strategies in diverse fields like healthcare, finance, and autonomous systems.",
         "resume": "<ul style=\"list-style: outside; margin-left: 15px;\"><li>Projects in AI/ML</li><li>Strong CGPA and department rank</li></ul>",
-        "companies": "Industry Leaders: Google DeepMind, OpenAI, IBM Watson, Amazon AI, Facebook AI Research (FAIR), NVIDIA AI, Microsoft AI and Research"
+        "companies": "Industry Leaders: Google DeepMind, OpenAI, IBM Watson, Amazon AI, Facebook AI Research (FAIR), NVIDIA AI, Microsoft AI and Research",
+        "label": ["1st", "2nd","3rd", "4th", "5th","6th","7th"]
     },
     "consult": {
         "name": "Consulting",
@@ -81,6 +86,7 @@
         "skills": "Soft Skills - Management skills, Communication skills, Leadership skills, Problem Solving<br/>Hard Skills - Excel, Teams, Data Analysis, Presentation Tools, Project Management",
         "trajectory": "A career in consulting offers a structured yet dynamic growth path, typically starting with entry-level roles like Analyst or Associate Consultant. With experience and strong performance, you can expect promotions every 1-2 years in the early stages, advancing through roles such as Consultant, Senior Consultant, and Manager.<br/>Most consultants opt out of consulting in a few years. There are a lot of exit options - startups, private equity, management roles, MBAs etc",
         "resume": "There is a CV shortlisting in consulting roles which is a huge bottleneck as students apply. 20-30 shortlists are made (might vary with company) who would be eligible for further rounds. Hence making a good CV is very important.<br/>A consulting CV has 5 section<ul style=\"list-style: outside; margin-left: 15px;\"><li>CG</li><li>Scholastic Achievememts</li><li>Internship (Startup/Research/Corporate)</li><li>POR</li><li>ECA</li></ul>When a  section of your CV is above average, its known as a ‘spike’. Generally, you should be shortlisted if you have at least 3-4 ‘spikes’ among the 5 sections.<br/>We advise you to have a talk with your seniors or see the BSW Podcasts to understand the CV Building procedure in detail.",
-        "companies": "McKinsey & Company, Boston Consulting Group (BCG), Bain & Company, LEK Consulting, Strategy&, Kearney, Accenture, Nomura, KPMG"
+        "companies": "McKinsey & Company, Boston Consulting Group (BCG), Bain & Company, LEK Consulting, Strategy&, Kearney, Accenture, Nomura, KPMG",
+        "label": ["1st", "2nd","3rd", "4th", "5th","6th","7th"]
     }
 }
