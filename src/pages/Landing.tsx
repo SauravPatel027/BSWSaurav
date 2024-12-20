@@ -23,9 +23,10 @@ export default function Landing() {
             <Navbar />
             <Hero />
             <Explore />
-            <BuildProfile />
+            
             <HandsOnExposure />
             <Prepare />
+            <BuildProfile />
         </div>
     );
 }
