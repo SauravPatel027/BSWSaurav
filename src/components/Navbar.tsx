@@ -5,14 +5,36 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isExploreDropdownOpen, setIsExploreDropdownOpen] = useState(false);
     const [isBuildDropdownOpen, setIsBuildDropdownOpen] = useState(false);
+    const [exploreTimeout, setExploreTimeout] = useState<NodeJS.Timeout | null>(null);
+    const [buildTimeout, setBuildTimeout] = useState<NodeJS.Timeout | null>(null);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const openExploreDropdown = () => setIsExploreDropdownOpen(true);
-    const closeExploreDropdown = () => setIsExploreDropdownOpen(false);
+    const openExploreDropdown = () => {
+        if (exploreTimeout) clearTimeout(exploreTimeout); // Clear any previous timeout
+        setIsExploreDropdownOpen(true);
+    };
 
-    const openBuildDropdown = () => setIsBuildDropdownOpen(true);
-    const closeBuildDropdown = () => setIsBuildDropdownOpen(false);
+    const closeExploreDropdown = () => {
+        if (exploreTimeout) clearTimeout(exploreTimeout); // Clear any previous timeout
+        const timeout = setTimeout(() => {
+            setIsExploreDropdownOpen(false);
+        }, 300); // Delay for 0.5 seconds after mouse leaves
+        setExploreTimeout(timeout);
+    };
+
+    const openBuildDropdown = () => {
+        if (buildTimeout) clearTimeout(buildTimeout); // Clear any previous timeout
+        setIsBuildDropdownOpen(true);
+    };
+
+    const closeBuildDropdown = () => {
+        if (buildTimeout) clearTimeout(buildTimeout); // Clear any previous timeout
+        const timeout = setTimeout(() => {
+            setIsBuildDropdownOpen(false);
+        }, 300); // Delay for 0.5 seconds after mouse leaves
+        setBuildTimeout(timeout);
+    };
 
     return (
         <div className="w-full z-10 h-[50px] md:h-[70px] bg-[#EDEDED] text-[#133748] font-[Poppins] fixed shadow-lg shadow-black/10">
