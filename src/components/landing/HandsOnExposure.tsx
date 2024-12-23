@@ -1,5 +1,5 @@
 import yosemiteValleyImage from '../../assets/landing/yosemite-valley.png';  
-
+import { Link } from "react-router-dom";
 const HandsOnExposure = () => {  
     return (   
         <div className="bg-[#0E2F3F] w-full flex p-10 relative h-[160%]">  
@@ -11,11 +11,11 @@ const HandsOnExposure = () => {
                     seniors at the top of their fields.
                 </p>  
                 <div className="flex gap-x-4 my-1"> {/* Adjusted gap between buttons using gap-x */}  
-                    <a href = "../BUILD/core"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Core</button></a>  
-                    <a href = "../BUILD/sde"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">SDE</button> </a> 
-                    <a href = "../BUILD/consult"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Consult</button>  </a>
-                    <a href = "../BUILD/finance"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Analytics</button>  </a>
-                    <a href = "../BUILD/quant"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Quant</button></a>
+                     <button  className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full"><Link to="../BUILD/core"> Core  </Link></button>
+                    <button  className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full"><Link to = "../BUILD/sde">SDE</Link></button> 
+                    <button  className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full"><Link to ="../BUILD/consult">Consult</Link></button>  
+                    <button  className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full"><Link to ="../BUILD/finance">Analytics</Link></button> 
+                    <button  className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full"><Link to ="../BUILD/quant">Quant</Link></button>
                 </div>  
                 <div>
                     <div>
