@@ -11,11 +11,11 @@ const HandsOnExposure = () => {
                     seniors at the top of their fields.
                 </p>  
                 <div className="flex gap-x-4 my-1"> {/* Adjusted gap between buttons using gap-x */}  
-                    <button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Core</button>  
-                    <button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">SDE</button>  
-                    <button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Consult</button>  
-                    <button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Analytics</button>  
-                    <button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Quant</button>
+                    <a href = "../Build/core"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Core</button></a>  
+                    <a href = "../Build/sde"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">SDE</button> </a> 
+                    <a href = "../Build/consult"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Consult</button>  </a>
+                    <a href = "../Build/finance"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Analytics</button>  </a>
+                    <a href = "../Build/quant"><button className="border-white border-2 bg-transparent text-white py-1 px-3 rounded-full">Quant</button></a>
                 </div>  
                 <div>
                     <div>
