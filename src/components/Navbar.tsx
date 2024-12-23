@@ -5,8 +5,8 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isExploreDropdownOpen, setIsExploreDropdownOpen] = useState(false);
     const [isBuildDropdownOpen, setIsBuildDropdownOpen] = useState(false);
-    const [exploreTimeout, setExploreTimeout] = useState<NodeJS.Timeout | null>(null);
-    const [buildTimeout, setBuildTimeout] = useState<NodeJS.Timeout | null>(null);
+    const [exploreTimeout, setExploreTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
+    const [buildTimeout, setBuildTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -19,7 +19,7 @@ export default function Navbar() {
         if (exploreTimeout) clearTimeout(exploreTimeout); // Clear any previous timeout
         const timeout = setTimeout(() => {
             setIsExploreDropdownOpen(false);
-        }, 300); // Delay for 0.5 seconds after mouse leaves
+        }, 500); // Delay for 0.5 seconds after mouse leaves
         setExploreTimeout(timeout);
     };
 
@@ -32,7 +32,7 @@ export default function Navbar() {
         if (buildTimeout) clearTimeout(buildTimeout); // Clear any previous timeout
         const timeout = setTimeout(() => {
             setIsBuildDropdownOpen(false);
-        }, 300); // Delay for 0.5 seconds after mouse leaves
+        }, 500); // Delay for 0.5 seconds after mouse leaves
         setBuildTimeout(timeout);
     };
 
