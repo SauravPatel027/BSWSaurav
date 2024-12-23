@@ -1,4 +1,4 @@
-import React, { useState } from "react";  
+import React from "react";  
 import profileData from "../../assets/profiles.json";
 
 const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {  
@@ -32,28 +32,10 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
             label: profile?.upwardLabels?.[index] || `Up ${index + 1}`,  
         })).filter(arrow => arrow.label.trim() !== ""), // Filter out blank labels  
     ];  
-    const [tooltip, setTooltip] = useState({
-        show: false,
-        text: "",
-        position: { top: 0, left: 0 },
-      });
     
-      const handleMouseEnter = (event: React.MouseEvent, index: number) => {
-        const { clientX: left, clientY: top } = event;
-        setTooltip({
-          show: true,
-          text: `Good luck Q${index + 1}`,
-          position: { top, left },
-        });
-      };
     
-      const handleMouseLeave = () => {
-        setTooltip({
-          show: false,
-          text: "",
-          position: { top: 0, left: 0 },
-        });
-    };
+      
+      
 
     return (  
         <div className="w-full min-h-screen bg-[#E4E4E4] flex flex-col items-center">  
@@ -115,8 +97,8 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
                 <React.Fragment key={index}>
                   <a
                     href={`#${question.toLowerCase()}`}
-                    onMouseEnter={(e) => handleMouseEnter(e, index)}
-                    onMouseLeave={handleMouseLeave}
+                    //onMouseEnter={(e) => handleMouseEnter(e, index)}
+                   // onMouseLeave={handleMouseLeave}
                     className="text-black text-xl font-bold underline"
                   >
                     {question}
