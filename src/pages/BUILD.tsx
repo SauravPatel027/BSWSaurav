@@ -10,7 +10,7 @@ export default function BuildPage() {
         <div>
             <Navbar />
             <Hero profileName={profileName} />
-            <Main/>
+            <Main profileName={profileName}/>
         </div>
     );
 }
