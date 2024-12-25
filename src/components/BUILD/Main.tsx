@@ -1,12 +1,15 @@
-import React from "react";  
+import React, {useState} from "react";  
+
 import profileData from "../../assets/profiles.json";
 
 const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {  
     const profile = profileData[profileName as keyof typeof profileData];
+    const [hoveredQuestion, setHoveredQuestion] = useState<string | null>(null);
+    const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const curveHeight = 300;  
     const middle = 150;  
     const amplitude = 25;
-    const startX = -Math.PI; 
+    const startX = -1.1*Math.PI; 
     const endX = 6.5 * Math.PI; 
 
     const downwardArrowPositions = [-Math.PI / 2, (3 * Math.PI) / 2, (7 * Math.PI) / 2, (11 * Math.PI) / 2];  
@@ -15,7 +18,33 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
     const mapToPercentage = (x: number): number => ((x - startX) / (endX - startX)) * 100;
 
     const calculateY = (x: number): number => middle - amplitude * Math.sin(x);
-     
+    const handleMouseEnter = (question: string, event: React.MouseEvent) => {
+      setHoveredQuestion(question); // Set hovered question text
+  
+      // Get the position of the mouse on hover
+      const rect = event.currentTarget.getBoundingClientRect();
+      setTooltipPosition({
+        x: rect.left + rect.width / 2, // X position at the center of the element
+        y: rect.top - 20, // Y position just above the element (20px offset)
+      });
+    };
+    const handleMouseLeave = () => {
+      setHoveredQuestion(null); // Clear hovered question text
+    };
+    const convertTimestampToSeconds = (timestamp: string): number => {
+      const [minutes, seconds] = timestamp.split(':').map(Number); // Split and convert to numbers
+      return minutes * 60 + seconds; // Convert to total seconds
+    };
+    const handleQuestionClick = (timestamp: string) => {
+      const videoElement = document.querySelector("video"); // Select the video element
+      const timestampInSeconds = convertTimestampToSeconds(timestamp); // Convert the timestamp to seconds
+      
+      if (videoElement) {
+        videoElement.currentTime = timestampInSeconds; // Set the video's current time
+        videoElement.play(); // Start playing the video from that point
+      }
+    };
+    
 
  
     const arrows = [  
@@ -38,11 +67,11 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
       
 
     return (  
-        <div className="w-full min-h-screen bg-[#E4E4E4] flex flex-col items-center">  
-            <div className="flex-grow">  
+        <div className="w-full min-h-screen bg-[#D9D9D9] flex flex-col items-center">  
+            <div className="flex-grow" >  
                
                 <div className="w-full py-2 flex flex-col items-center relative">  
-                    <h1 className="text-3xl md:text-5xl font-bold text-center mb-8 mt-0" style={{ fontFamily: "Times New Roman, serif", color: "#002F40", fontWeight: 500 }}>Timeline</h1>  
+                    <h1 className="text-3xl md:text-5xl font-bold text-center mb-8 mt-0" style={{ fontFamily: "Cormorant infant, serif", color: "#002F40", fontWeight: 500 }}>Timeline</h1>  
 
                    
                     <div className="relative w-full min-h-[400px]">  
@@ -80,7 +109,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
                 </div>  
 
                  
-                <div className="flex w-full bg-[#F5F5F5]">
+                <div className="flex w-full bg-[#D9D9D9] mt-12">
     <div className="w-1/2 bg-[#002F40] p-8 flex items-center justify-center">
         <video
             className="w-full h-auto rounded-3xl"
@@ -88,33 +117,64 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
             src={profile?.videoLinks?.[0] || ""}
         />
     </div>
-    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#F5F5F5]">
-        <h1 className="text-5xl font-bold text-center text-black mb-4" style={{ fontFamily: "Times New Roman, serif" }}>FAQs</h1>
-        <p className="text-2xl font-bold text-center text-black mb-2">All your questions answered!</p>
-        <p className="text-xl text-center text-black mb-4">Use the timestamps below to navigate to the questions of your choice:</p>
-        <div className="flex space-x-4">
-        {profile?.question?.map((question, index) => (
-                <React.Fragment key={index}>
-                  <a
-                    href={`#${question.toLowerCase()}`}
-                    //onMouseEnter={(e) => handleMouseEnter(e, index)}
-                   // onMouseLeave={handleMouseLeave}
-                    className="text-black text-xl font-bold underline"
-                  >
-                    {question}
-                  </a>
-                  {index < profile.question.length - 1 && <span className="text-black text-xl">|</span>}
-                </React.Fragment>
-              ))}
-        </div>
-    </div>
+    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
+                        <h1 className="text-6xl font-bold text-center text-black mb-4" style={{ fontFamily: "Times New Roman, serif", fontWeight: "500" }}>FAQs</h1>
+                        <p className="text-2xl text-center text-black mb-4">Use the timestamps below to navigate to the questions of your choice:</p>
+                        <div className="flex flex-wrap space-x-4">
+                        {profile?.question?.map((question, index) => (
+                    <React.Fragment key={index}>
+                      <a
+                        href={`#${question.toLowerCase()}`}
+                        onClick={() => handleQuestionClick(profile.timestamps[index])} // Use timestamp
+                        onMouseEnter={(e) => handleMouseEnter(question, e)} // Pass mouse event
+                        onMouseLeave={handleMouseLeave} // Hide tooltip on mouse leave
+                        className="text-black text-2xl font-medium underline"
+                      >
+                        Q{index + 1}
+                      </a>
+                      {index < profile.question.length - 1 && <span className="text-black text-xl">|</span>}
+                    </React.Fragment>
+                  ))}
+
+                        </div>
+                        {hoveredQuestion && (
+          <div
+            className="absolute p-4 bg-black shadow-lg rounded-xl max-w-xs border border-gray-300"
+            style={{
+              top: `${tooltipPosition.y}px`, // Position above the question link
+              left: `${tooltipPosition.x}px`, // Position at the center of the question link
+              transform: "translate(-50%, -100%)", // Adjust the tooltip position
+              zIndex: 1000, // Ensure it appears above other elements
+            }}
+          >
+            <p className="text-xl text-white">{hoveredQuestion}</p>
+          </div>
+        )}
+                    </div>
 </div>
 
-<div className="flex w-full bg-[#F5F5F5]">
-    <div className="w-1/2 flex flex-col items-center justify-center p-8">
-        <h1 className="text-5xl font-bold text-center text-black mb-4" style={{ fontFamily: "Times New Roman, serif" }}>CV Making</h1>
-        <p className="text-xl text-center text-black mb-4">Learn how to make the perfect CV from our established experts to maximise your shortlists.</p>
-    </div>
+<div className="flex w-full bg-[#D9D9D9]">
+<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
+    <h1
+        className="text-5xl text-center text-black mb-4"
+        style={{
+            fontFamily: "Cormorant Infant, serif", // Set font for CV Making
+            fontWeight: 540 // Custom font weight for the heading
+        }}
+    >
+        CV Making
+    </h1>
+    <p
+        className="text-2xl text-center text-black mb-4"
+        style={{
+            fontFamily: "Montserrat, sans-serif", // Set font for the paragraph text
+            fontWeight: "normal" // Normal font weight for the body text
+        }}
+    >
+        Learn how to make the perfect CV from <br></br>our established experts to maximise <br></br> your shortlists!
+    </p>
+</div>
+
     <div className="w-1/2 bg-[#002F40] p-8 flex items-center justify-center">
         <video
             className="w-full h-auto rounded-3xl"
@@ -126,7 +186,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
  
 
                  
-<div className="w-full bg-[#E4E4E4] p-8">
+<div className="w-full bg-[#D9D9D9] p-8">
 {profile?.guide?.html && (
         <div
             dangerouslySetInnerHTML={{ __html: profile.guide.html }}
@@ -170,6 +230,8 @@ const Arrow: React.FC<ArrowProps> = ({ x, y, direction, label }) => {
           left: x,
           top: `${y}px`,
           transform: "translate(-50%, 0)",
+          fontFamily: "Montserrat, sans-serif",
+          
         }}
       >
         {direction === "down" ? (
@@ -183,8 +245,8 @@ const Arrow: React.FC<ArrowProps> = ({ x, y, direction, label }) => {
               className="text-sm mt-2 text-[#000000] font-semibold text-center max-w-xs"
               style={{ textAlign: "center" }}
             >
-              <strong>{heading}</strong>
-              <p>{formatBodyText(body)}</p>
+              <span style={{ fontWeight: 700 }}>{heading}</span>
+              <p style={{ fontWeight: 5} }>{formatBodyText(body)}</p>
             </div>
           </>
         ) : (
@@ -193,8 +255,8 @@ const Arrow: React.FC<ArrowProps> = ({ x, y, direction, label }) => {
               className="text-sm mb-2 text-[#000000] font-semibold text-center max-w-xs"
               style={{ textAlign: "center" }}
             >
-              <strong>{heading}</strong>
-              <p>{formatBodyText(body)}</p>
+              <span style={{ fontWeight: 700 }}>{heading}</span>
+              <p style={{ fontWeight: 50 }}>{formatBodyText(body)}</p>
             </div>
             <div className="w-3 h-3 bg-[#002F40] rounded-full"></div>
             <div

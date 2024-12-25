@@ -5,7 +5,10 @@ import profileData from "../../assets/profiles.json";
 export default function Main({ profileName }: { profileName: string|undefined }) {
     const profile = profileData[profileName as keyof typeof profileData];
     const [readMore, setReadMore] = useState<boolean>(false);
-
+    useEffect(() => {
+        setReadMore(false); // Reset to 'Read More' when profile changes
+    }, [profileName]);
+    
     return (
         <div className="w-full min-h-[60vh] overflow-hidden py-16 bg-white">
             <div className="w-full px-8 md:px-16 flex-col flex justify-center items-center h-full">
@@ -17,10 +20,12 @@ export default function Main({ profileName }: { profileName: string|undefined })
                         {profile.overview}
                     </p>
                     <div className={`max-w-[600px] md:text-center ${readMore ? "block" : "hidden"}`}>
-
                         <p className="text-xl md:text-xl leading-[1.6]" dangerouslySetInnerHTML={{ __html: profile.readmore }} />
                     </div>
-                    <button className="mt-6 border-solid border-2 border-[#133748] py-3 px-6 hover:bg-[#133748] hover:text-white" onClick={() => setReadMore(!readMore)}>
+                    <button
+                        className="mt-6 border-solid border-2 border-[#133748] py-3 px-6 hover:bg-[#133748] hover:text-white"
+                        onClick={() => setReadMore(!readMore)}
+                    >
                         Read {readMore ? "Less" : "More"}
                     </button>
                 </div>
@@ -29,7 +34,7 @@ export default function Main({ profileName }: { profileName: string|undefined })
                 <FAQs profile={profile} />
             </div>
         </div>
-    );
+    );   
 }
 
 function FAQs({ profile }: { profile: typeof profileData[keyof typeof profileData] }) {

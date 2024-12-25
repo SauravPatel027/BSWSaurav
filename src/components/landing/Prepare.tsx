@@ -10,16 +10,36 @@ const Prepare = () => {
                 {/* Box 1 */}  
                 <div className="flex flex-col items-center justify-center rounded-lg w-[18vw]">  
                     <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover" />  
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
+                    <img src={resourceImage1} alt="UPSC PREP" className="w-full h-auto object-cover -mt-[100%]" />
                     <div className="w-full text-center font-bold mt-2 rounded-lg border border-[#0E2F3F] text-[#0E2F3F] py-2">UPSC PREP</div>  
                 </div>  
                 {/* Box 2 */}  
                 <div className="flex flex-col items-center justify-center rounded-lg w-[18vw]">  
-                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover" />  
+                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover" />
+                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover -mt-[100%]"/>  
+                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover -mt-[100%]"/>
+                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover -mt-[100%]"/>
+                    <img src={resourceImage2} alt="CAT PREP" className="w-full h-auto object-cover -mt-[100%]"/>
                     <div className="w-full text-center font-bold mt-2 rounded-lg border border-[#0E2F3F] text-[#0E2F3F] py-2">CAT PREP</div>  
                 </div>  
                 {/* Box 3 */}  
                 <div className="flex flex-col items-center justify-center rounded-lg w-[18vw]">  
-                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover" />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover " />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+
+                    <img src={resourceImage3} alt="HIGHER STUDIES" className="w-full h-auto object-cover -mt-[100%]" />  
+
                     <div className="w-full text-center font-bold mt-2 rounded-lg border border-[#0E2F3F] text-[#0E2F3F] py-2">HIGHER STUDIES</div>  
                 </div>  
             </div>  

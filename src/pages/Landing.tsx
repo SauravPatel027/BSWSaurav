@@ -26,7 +26,7 @@ export default function Landing() {
             
             <HandsOnExposure />
             <Prepare />
-            <BuildProfile />
+            
         </div>
     );
 }
