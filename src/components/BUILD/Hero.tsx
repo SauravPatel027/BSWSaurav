@@ -19,10 +19,10 @@ export default function Hero({profileName}: {profileName: string|undefined}) {
     );
 }
 
-function Background({ bg_image }: { bg_image1: string }) {
+function Background({ bg_image }: { bg_image: string }) {
     //I had to make this because somehow when I was exporting the svg from figma, the opacity of the svg was litte off
     return (
-        <div className="hidden md:flex -mt-5">
+        <div className="hidden md:flex">
             <img
                 src={bg_image}
                 alt="Background Image"
