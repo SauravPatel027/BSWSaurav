@@ -18,14 +18,13 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
     const mapToPercentage = (x: number): number => ((x - startX) / (endX - startX)) * 100;
 
     const calculateY = (x: number): number => middle - amplitude * Math.sin(x);
-    const handleMouseEnter = (question: string, event: React.MouseEvent) => {
-      setHoveredQuestion(question); // Set hovered question text
-  
-      // Get the position of the mouse on hover
-      const rect = event.currentTarget.getBoundingClientRect();
+    const handleMouseEnter = (index: number, event: React.MouseEvent) => {
+      setHoveredQuestion(profile?.questions?.[index] || "");
+    
+      // Positioning the tooltip dynamically
       setTooltipPosition({
-        x: rect.left + rect.width / 2, // X position at the center of the element
-        y: rect.top - 20, // Y position just above the element (20px offset)
+        x: event.clientX, // Use viewport-relative coordinates
+        y: event.clientY - 20, // Position above the cursor (20px offset)
       });
     };
     const handleMouseLeave = () => {
@@ -67,7 +66,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
       
 
     return (  
-        <div className="w-full min-h-screen bg-[#D9D9D9] flex flex-col items-center">  
+        <div className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">  
             <div className="flex-grow" >  
                
                 <div className="w-full py-2 flex flex-col items-center relative">  
@@ -117,49 +116,73 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
             src={profile?.videoLinks?.[0] || ""}
         />
     </div>
-    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
-                        <h1 className="text-6xl font-bold text-center text-black mb-4" style={{ fontFamily: "Times New Roman, serif", fontWeight: "500" }}>FAQs</h1>
-                        <p className="text-2xl text-center text-black mb-4">Use the timestamps below to navigate to the questions of your choice:</p>
+    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
+                        <h1 className="text-6xl font-bold text-center text-black mb-5" style={{ fontFamily: "Cormorant Infant, serif", fontWeight: "700" }}>FAQs</h1>
+                        <p className="text-2xl text-center text-black" style={{
+        fontFamily: "Montserrat, sans-serif",
+        fontWeight: 600,
+        
+      }}>All your Questions Answered!</p>
+                        <p className="text-2xl text-center text-black mb-8" style={{
+        fontFamily: "Montserrat, sans-serif",
+        fontWeight: "normal",
+        marginBottom: "50px", // Increased space
+      }}>Use the timestamps below to navigate to the questions of your choice:</p>
                         <div className="flex flex-wrap space-x-4">
-                        {profile?.question?.map((question, index) => (
-                    <React.Fragment key={index}>
-                      <a
-                        href={`#${question.toLowerCase()}`}
-                        onClick={() => handleQuestionClick(profile.timestamps[index])} // Use timestamp
-                        onMouseEnter={(e) => handleMouseEnter(question, e)} // Pass mouse event
-                        onMouseLeave={handleMouseLeave} // Hide tooltip on mouse leave
-                        className="text-black text-2xl font-medium underline"
-                      >
-                        Q{index + 1}
-                      </a>
-                      {index < profile.question.length - 1 && <span className="text-black text-xl">|</span>}
-                    </React.Fragment>
-                  ))}
+  {profile?.question?.map((question, index) => {
+    const shouldBreakLine = question.includes("!!"); // Check if the question contains "!!"
+    
+    return (
+      <React.Fragment key={index}>
+        {/* Displaying the question number */}
+        <a
+          href={`#${question.toLowerCase()}`}
+          onClick={() => handleQuestionClick(profile.timestamps[index])}
+          onMouseEnter={(e) => handleMouseEnter(index, e)}
+          onMouseLeave={handleMouseLeave}
+          className="text-black text-2xl font-medium underline"        >
+          Q{index + 1}
+        </a>
+        {/* Add a separator if it's not the last question */}
+        {index < profile.question.length - 1 && <span className="text-black text-xl">|</span>}
 
-                        </div>
+        {/* Add a line break if the question contains "!!" */}
+        {shouldBreakLine && <br />}
+      </React.Fragment>
+    );
+  })}
+</div>
+
                         {hoveredQuestion && (
-          <div
-            className="absolute p-4 bg-black shadow-lg rounded-xl max-w-xs border border-gray-300"
-            style={{
-              top: `${tooltipPosition.y}px`, // Position above the question link
-              left: `${tooltipPosition.x}px`, // Position at the center of the question link
-              transform: "translate(-50%, -100%)", // Adjust the tooltip position
-              zIndex: 1000, // Ensure it appears above other elements
-            }}
-          >
-            <p className="text-xl text-white">{hoveredQuestion}</p>
-          </div>
-        )}
+  <div
+    className="fixed shadow-lg text-black text-xl"
+    style={{
+      top: tooltipPosition.y,
+      left: tooltipPosition.x,
+      transform: "translate(-50%, -100%)", // Center the tooltip horizontally
+      zIndex: 1000, // Ensure the tooltip appears above all elements
+      whiteSpace: "nowrap", // Prevent text wrapping
+      backgroundColor: "#D9D9D9", // Set the background color
+      border: "2px solid #002F40", // Add a 2px solid border
+      borderRadius: "8px", // Rounded corners
+      padding: "6px 12px", // Smaller padding to reduce size
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Drop shadow effect
+    }}
+  >
+    {hoveredQuestion}
+  </div>
+)}
+
                     </div>
 </div>
 
-<div className="flex w-full bg-[#D9D9D9]">
-<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
+<div className="flex w-full">
+<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
     <h1
-        className="text-5xl text-center text-black mb-4"
+        className="text-5xl text-center text-black mb-6"
         style={{
             fontFamily: "Cormorant Infant, serif", // Set font for CV Making
-            fontWeight: 540 // Custom font weight for the heading
+            fontWeight: "700" // Custom font weight for the heading
         }}
     >
         CV Making
@@ -186,7 +209,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
  
 
                  
-<div className="w-full bg-[#D9D9D9] p-8">
+<div className="w-full bg-[#FFFFFF] p-8">
 {profile?.guide?.html && (
         <div
             dangerouslySetInnerHTML={{ __html: profile.guide.html }}

@@ -61,7 +61,7 @@ export default function Navbar() {
                                     <li><Link to="/explore/sde" className="block px-4 py-2 hover:bg-gray-100">SDE</Link></li>
                                     <li><Link to="/explore/quant" className="block px-4 py-2 hover:bg-gray-100">Quant</Link></li>
                                     <li><Link to="/explore/core" className="block px-4 py-2 hover:bg-gray-100">Core</Link></li>
-                                    <li><Link to="/explore/finance" className="block px-4 py-2 hover:bg-gray-100">Finance</Link></li>
+                                    <li><Link to="/explore/finance" className="block px-4 py-2 hover:bg-gray-100">Analytics</Link></li>
                                     <li><Link to="/explore/ai-ml" className="block px-4 py-2 hover:bg-gray-100">AI-ML</Link></li>
                                     <li><Link to="/explore/consult" className="block px-4 py-2 hover:bg-gray-100">Consulting</Link></li>
                                 </ul>
@@ -82,8 +82,7 @@ export default function Navbar() {
                                     <li><Link to="/BUILD/sde" className="block px-4 py-2 hover:bg-gray-100">SDE</Link></li>
                                     <li><Link to="/BUILD/quant" className="block px-4 py-2 hover:bg-gray-100">Quant</Link></li>
                                     <li><Link to="/BUILD/core" className="block px-4 py-2 hover:bg-gray-100">Core</Link></li>
-                                    <li><Link to="/BUILD/finance" className="block px-4 py-2 hover:bg-gray-100">Finance</Link></li>
-                                    <li><Link to="/BUILD/ai-ml" className="block px-4 py-2 hover:bg-gray-100">AI-ML</Link></li>
+                                    <li><Link to="/BUILD/finance" className="block px-4 py-2 hover:bg-gray-100">Analytics</Link></li>                                   
                                     <li><Link to="/BUILD/consult" className="block px-4 py-2 hover:bg-gray-100">Consulting</Link></li>
                                 </ul>
                             </div>
