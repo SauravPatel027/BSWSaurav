@@ -1,11 +1,19 @@
 import React, {useState} from "react";  
+import ReactPlayer from "react-player";
 
 import profileData from "../../assets/profiles.json";
 
 const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {  
     const profile = profileData[profileName as keyof typeof profileData];
     const [hoveredQuestion, setHoveredQuestion] = useState<string | null>(null);
+    const [autoPlay, setAutoPlay] = useState<boolean>(false);
     const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+   
+    const [playerKey, setPlayerKey] = useState<number>(0);
+    const [playingURL, setPlayingURL] = useState<string>(
+      profile?.videoLinks?.[0] || ""
+  );
+  
     const curveHeight = 300;  
     const middle = 150;  
     const amplitude = 25;
@@ -29,22 +37,8 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
     };
     const handleMouseLeave = () => {
       setHoveredQuestion(null); // Clear hovered question text
-    };
-    const convertTimestampToSeconds = (timestamp: string): number => {
-      const [minutes, seconds] = timestamp.split(':').map(Number); // Split and convert to numbers
-      return minutes * 60 + seconds; // Convert to total seconds
-    };
-    const handleQuestionClick = (timestamp: string) => {
-      const videoElement = document.querySelector("video"); // Select the video element
-      const timestampInSeconds = convertTimestampToSeconds(timestamp); // Convert the timestamp to seconds
-      
-      if (videoElement) {
-        videoElement.currentTime = timestampInSeconds; // Set the video's current time
-        videoElement.play(); // Start playing the video from that point
-      }
-    };
-    
-
+    };    
+    const handleQuestionClick = (iddd: number, event: React.MouseEvent) => { event.preventDefault(); setPlayingURL(profile.timestamps[iddd]);  setPlayerKey(prevKey => prevKey + 1); setAutoPlay(true); const originalScrollTo = window.scrollTo; window.scrollTo = () => {}; setTimeout(() => { window.scrollTo = originalScrollTo; }, 1); };
  
     const arrows = [  
         ...downwardArrowPositions.map((x, index) => ({  
@@ -66,6 +60,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
       
 
     return (  
+      
         <div className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">  
             <div className="flex-grow" >  
                
@@ -109,13 +104,9 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
 
                  
                 <div className="flex w-full bg-[#FFFFFF] mt-12">
-    <div className="w-1/2 bg-[#002F40] p-8 flex items-center justify-center">
-        <video
-            className="w-full h-auto rounded-3xl"
-            controls
-            src={profile?.videoLinks?.[0] || ""}
-        />
-    </div>
+                
+    <div className="w-1/2 min-h-[300px] bg-[#002F40] p-8 flex items-center justify-center">
+    <ReactPlayer key={playerKey}  url={playingURL}  className="react-player" width="90%" height="95%" controls  playing={autoPlay}/>    </div>
     <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
                         <h1 className="text-6xl font-bold text-center text-black mb-5" style={{ fontFamily: "Cormorant Infant, serif", fontWeight: "700" }}>FAQs</h1>
                         <p className="text-2xl text-center text-black" style={{
@@ -137,7 +128,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
         {/* Displaying the question number */}
         <a
           href={`#${question.toLowerCase()}`}
-          onClick={() => handleQuestionClick(profile.timestamps[index])}
+          onClick={(e) => handleQuestionClick(index, e)}
           onMouseEnter={(e) => handleMouseEnter(index, e)}
           onMouseLeave={handleMouseLeave}
           className="text-black text-2xl font-medium underline"        >
@@ -198,12 +189,15 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
     </p>
 </div>
 
-    <div className="w-1/2 bg-[#002F40] p-8 flex items-center justify-center">
-        <video
-            className="w-full h-auto rounded-3xl"
-            controls
-            src={profile?.videoLinks?.[1] || ""}
-        />
+    <div className="w-1/2 min-h-[300px] bg-[#002F40] p-8 flex items-center justify-center">
+    <ReactPlayer
+    url={profile?.videoLinks?.[1] || ""}
+    className="react-player"
+    width="90%"
+    height="95%"
+    controls
+/>
+       
     </div>
 </div>
  
