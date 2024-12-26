@@ -66,7 +66,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
       
 
     return (  
-        <div className="w-full min-h-screen bg-[#D9D9D9] flex flex-col items-center">  
+        <div className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">  
             <div className="flex-grow" >  
                
                 <div className="w-full py-2 flex flex-col items-center relative">  
@@ -108,7 +108,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
                 </div>  
 
                  
-                <div className="flex w-full bg-[#D9D9D9] mt-12">
+                <div className="flex w-full bg-[#FFFFFF] mt-12">
     <div className="w-1/2 bg-[#002F40] p-8 flex items-center justify-center">
         <video
             className="w-full h-auto rounded-3xl"
@@ -177,7 +177,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
 </div>
 
 <div className="flex w-full">
-<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
+<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
     <h1
         className="text-5xl text-center text-black mb-6"
         style={{
@@ -209,7 +209,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
  
 
                  
-<div className="w-full bg-[#D9D9D9] p-8">
+<div className="w-full bg-[#FFFFFF] p-8">
 {profile?.guide?.html && (
         <div
             dangerouslySetInnerHTML={{ __html: profile.guide.html }}
