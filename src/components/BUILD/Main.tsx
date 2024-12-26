@@ -66,7 +66,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
       
 
     return (  
-        <div className="w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">  
+        <div className="w-full min-h-screen bg-[#D9D9D9] flex flex-col items-center">  
             <div className="flex-grow" >  
                
                 <div className="w-full py-2 flex flex-col items-center relative">  
@@ -116,7 +116,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
             src={profile?.videoLinks?.[0] || ""}
         />
     </div>
-    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
+    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
                         <h1 className="text-6xl font-bold text-center text-black mb-5" style={{ fontFamily: "Cormorant Infant, serif", fontWeight: "700" }}>FAQs</h1>
                         <p className="text-2xl text-center text-black" style={{
         fontFamily: "Montserrat, sans-serif",
@@ -177,7 +177,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
 </div>
 
 <div className="flex w-full">
-<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
+<div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
     <h1
         className="text-5xl text-center text-black mb-6"
         style={{
@@ -209,7 +209,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
  
 
                  
-<div className="w-full bg-[#FFFFFF] p-8">
+<div className="w-full bg-[#D9D9D9] p-8">
 {profile?.guide?.html && (
         <div
             dangerouslySetInnerHTML={{ __html: profile.guide.html }}
