@@ -7,7 +7,7 @@ export default function Explore() {
     const [currentImg, setCurrentImg] = useState<number>(Math.floor(Math.random()*6));
 
     return (
-        <div className="w-full min-h-[60vh] overflow-hidden md:py-10 pb-10" id="explore">
+        <div className="w-full h-auto overflow-hidden pt-[2vh] pb-[5vh]" id="explore">
             <div className="w-full px-4  md:px-16 flex-col lg:flex-row flex justify-evenly items-center h-full ">
                 <div
                     id="carousel-box"
@@ -33,7 +33,7 @@ export default function Explore() {
                                 <img
                                     src={profileData[listItems[currentImg % listItems.length] as keyof typeof profileData].cover_image}
                                     alt="Image"
-                                    className="w-full object-cover h-full object-center"
+                                    className="w-full object-contain h-full object-center"
                                 />
                             </Link>
                             ;
