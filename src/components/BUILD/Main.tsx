@@ -116,7 +116,7 @@ const TimelinePage = ({ profileName }: { profileName: string | undefined }) => {
             src={profile?.videoLinks?.[0] || ""}
         />
     </div>
-    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#D9D9D9]">
+    <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-[#FFFFFF]">
                         <h1 className="text-6xl font-bold text-center text-black mb-5" style={{ fontFamily: "Cormorant Infant, serif", fontWeight: "700" }}>FAQs</h1>
                         <p className="text-2xl text-center text-black" style={{
         fontFamily: "Montserrat, sans-serif",
